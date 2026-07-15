@@ -50,5 +50,17 @@ p {
 
 button {
     width: 100%;
-    min-height: 56px;
-
+    min-height: 50px;
+}
+#checkAnswerBtn{
+	width:revert;
+	margin-left:10px;
+	min-height:40px;
+}
+#nextQuestionBtn{
+	width:revert;
+	min-height:40px;
+}
+#answerInput{
+    min-height: 40px;
+}
