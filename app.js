@@ -17,7 +17,7 @@ async function loadBooks() {
             .filter(line => line !== "");
 
         bookSelect.innerHTML = '<option value="">選択してください</option>';
-/*
+
         for (const line of lines) {
             const parts = line.split(",");
 
@@ -31,7 +31,7 @@ async function loadBooks() {
 
             bookSelect.appendChild(option);
         }
-        */
+        
     } catch (error) {
         console.error("books.txt の読込失敗", error);
     }
