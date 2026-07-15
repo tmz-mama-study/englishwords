@@ -10,7 +10,9 @@ async function loadBooks() {
     try {
         const response = await fetch("data/books.txt");
         const text = await response.text();
-
+        
+        console.log(text);    // F12で確認
+        
         const lines = text
             .split(/\r?\n/)
             .map(line => line.trim())
