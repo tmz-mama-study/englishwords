@@ -14,10 +14,6 @@
 <select id="bookSelect">
 <option value="">読み込み中...</option>
 </select>
-</section>
-    
-<section>
-<h2>単語帳情報</h2>
 <p><strong>単語帳：</strong><span id="bookTitle">未選択</span></p>
 <p><strong>登録単語数：</strong><span id="wordCount">0</span>語</p>
 </section>
@@ -31,12 +27,14 @@
 </section>
 
 <section id="quizArea" style="display:none;">
-    <h2>読みテスト</h2>
-    <p id="questionWord"></p>
-    <button id="showAnswerBtn">答えを見る</button>
-    <p id="answerArea"></p>
-    <button id="nextQuestionBtn">次の問題</button>
-</section>    
+<h2><span id="quiztitle">●●テスト</span></h2>
+
+<p id="questionWord"></p>
+⇒<input id="answerInput" type="text" placeholder="日本語を入力"><button id="checkAnswerBtn">回答</button>
+<p id="resultArea"></p>
+<button id="nextQuestionBtn">次の問題</button>
+</section>
+
 </main>
 
     <script src="app.js"></script>
