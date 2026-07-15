@@ -16,8 +16,8 @@ async function loadBooks() {
             .map(line => line.trim())
             .filter(line => line !== "");
 
-        bookSelect.innerHTML = '<option value="">‘I‘ğ‚µ‚Ä‚­‚¾‚³‚¢</option>';
-
+        bookSelect.innerHTML = '<option value="">é¸æŠã—ã¦ãã ã•ã„</option>';
+/*
         for (const line of lines) {
             const parts = line.split(",");
 
@@ -31,8 +31,9 @@ async function loadBooks() {
 
             bookSelect.appendChild(option);
         }
+        */
     } catch (error) {
-        console.error("books.txt ‚Ì“Ç¸”s", error);
+        console.error("books.txt ã®èª­è¾¼å¤±æ•—", error);
     }
 }
 
@@ -54,7 +55,7 @@ async function loadWordBook(filePath) {
         parseWordBook(text);
 
     } catch (error) {
-        console.error("’PŒê’ ‚Ì“Ç¸”s", error);
+        console.error("å˜èªå¸³ã®èª­è¾¼å¤±æ•—", error);
     }
 }
 
@@ -66,7 +67,7 @@ function parseWordBook(text) {
 
     words = [];
 
-    let title = "ƒ^ƒCƒgƒ‹‚È‚µ";
+    let title = "ã‚¿ã‚¤ãƒˆãƒ«ãªã—";
 
     for (const line of lines) {
 
