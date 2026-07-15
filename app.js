@@ -102,3 +102,10 @@ function enableButtons() {
     document.getElementById("paperBtn").disabled = false;
     document.getElementById("weakBtn").disabled = false;
 }
+
+// 読みテスト
+document.getElementById("readingBtn").addEventListener("click", startReadingTest);
+function startReadingTest() {
+    quizArea.style.display = "block";
+    showQuestion();
+}
