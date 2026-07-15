@@ -105,6 +105,15 @@ function enableButtons() {
 
 // 読みテスト
 document.getElementById("readingBtn").addEventListener("click", startReadingTest);
+let currentWord = null;
+// 問題表示
+function showQuestion() {
+    const index = Math.floor(Math.random() * words.length);
+    currentWord = words[index];
+    questionWord.textContent = currentWord.english;
+    answerArea.textContent = "";
+}
+// テスト読込
 function startReadingTest() {
     quizArea.style.display = "block";
     showQuestion();
