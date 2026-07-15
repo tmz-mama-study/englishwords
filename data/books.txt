@@ -1,2 +1,1 @@
-サンプル,data/test.txt
-中１-２学期中間,data/tyu01_02_t.txt
+aaa,data/test.txt
