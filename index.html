@@ -2,11 +2,49 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>英単語トレーニング</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>ファイル選択</h1>
-    <p>単語帳名：<span id=wdname></span></p>
-    <P>単語数：<span id=wdcnt></span></P>
+
+    <main>
+        <h1>📚 英単語トレーニング</h1>
+        <section>
+            <h2>単語ファイル読込</h2>
+            <input
+                type="file"
+                id="fileInput"
+                accept=".txt"
+            >
+        </section>
+        <section>
+            <h2>単語帳情報</h2>
+            <p>
+                <strong>単語帳：</strong>
+                <span id="bookTitle">未読込</span>
+            </p>
+            <p>
+                <strong>登録単語数：</strong>
+                <span id="wordCount">0</span>語
+            </p>
+        </section>
+        <section>
+            <h2>学習メニュー</h2>
+            <button id="readingBtn" disabled>
+                読みテスト
+            </button>
+            <button id="spellingBtn" disabled>
+                スペルテスト
+            </button>
+            <button id="paperBtn" disabled>
+                紙に書く
+            </button>
+            <button id="weakBtn" disabled>
+                苦手単語
+            </button>
+        </section>
+    </main>
+    script src="app.js"></script>
 </body>
 </html>
