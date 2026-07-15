@@ -2,6 +2,10 @@ const bookSelect = document.getElementById("bookSelect");
 const bookTitle = document.getElementById("bookTitle");
 const wordCount = document.getElementById("wordCount");
 
+const answerInput = document.getElementById("answerInput");
+const resultArea = document.getElementById("resultArea");
+const checkAnswerBtn = document.getElementById("checkAnswerBtn");
+
 let words = [];
 
 window.addEventListener("DOMContentLoaded", loadBooks);
@@ -103,18 +107,91 @@ function enableButtons() {
     document.getElementById("weakBtn").disabled = false;
 }
 
-// 読みテスト
-document.getElementById("readingBtn").addEventListener("click", startReadingTest);
+
+let questionOrder = [];
+let currentPosition = 0;
 let currentWord = null;
+
+// ***************************************************************
 // 問題表示
+// ***************************************************************
 function showQuestion() {
-    const index = Math.floor(Math.random() * words.length);
-    currentWord = words[index];
+
+    if (currentPosition >= questionOrder.length) {
+        finishTest();
+        return;
+    }
+
+    currentWord = questionOrder[currentPosition];
+
     questionWord.textContent = currentWord.english;
-    answerArea.textContent = "";
+
+    answerInput.value = "";
+    resultArea.textContent = "";
+
+	checkAnswerBtn.disabled = false;
+	nextQuestionBtn.hidden = true;
 }
-// テスト読込
+// 問題シャッフル
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+// ***************************************************************
+// 読みテスト
+// ***************************************************************
+document.getElementById("readingBtn").addEventListener("click", startReadingTest);
 function startReadingTest() {
+	
+	const targetElement = event.target;
+    quiztitle.textContent = targetElement.textContent;
+	
+    questionOrder = [...words];
+    shuffle(questionOrder);
+
+    currentPosition = 0;
     quizArea.style.display = "block";
     showQuestion();
 }
+
+// ***************************************************************
+// 回答表示
+// ***************************************************************
+checkAnswerBtn.addEventListener("click", checkAnswer);
+function checkAnswer() {
+    const answer = answerInput.value.trim();
+
+    if (answer === currentWord.japanese) {
+        resultArea.textContent = "○ 正解";
+    } else {
+        resultArea.textContent =
+            `× 不正解　　答え：${currentWord.japanese}`;
+    }
+    checkAnswerBtn.disabled = true;
+	nextQuestionBtn.hidden = false;
+}
+
+// ***************************************************************
+// 次の問題
+// ***************************************************************
+nextQuestionBtn.addEventListener("click", () => {
+    currentPosition++;
+    showQuestion();
+});
+
+// ***************************************************************
+// 終了
+// ***************************************************************
+function finishTest() {
+    quizArea.innerHTML = `
+        <h2>テスト終了</h2>
+        <p>${questionOrder.length}問が終了しました。</p>
+    `;
+}
+
+
+
