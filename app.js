@@ -135,6 +135,7 @@ function showQuestion(mode) {
 	
 	let questStr = "";
 	let inputStr = "";
+	let hintStr="";
 	
 	switch(mode){
 	case mode_read:
@@ -144,10 +145,11 @@ function showQuestion(mode) {
 		break;
 	case mode_spel:
 		questStr = currentWord.japanese;
+		hintStr = `   (${currentWord.english.length}文字)`;
 		answerInput.disabled = true;
 		break;
 	}
-	questionWord.textContent ="("+ (currentPosition+1) + ") " +questStr;
+	questionWord.textContent ="("+ (currentPosition+1) + ") " +questStr + hintStr;
 
     answerInput.value = "";
 	resultArea.textContent = "";
