@@ -26,17 +26,39 @@
 <button id="weakBtn" disabled>苦手単語</button>
 </section>
 
+<!-- quizArea -->
 <section id="quizArea" style="display:none;">
 <h2><span id="quiztitle">●●テスト</span></h2>
 
+<!-- Read -->
 <p id="questionWord"></p>
+<span id="readTest" style="display:none;">
+</span>
+
 ⇒<input id="answerInput" type="text" placeholder="日本語を入力"><button id="checkAnswerBtn">回答</button>
 <p id="resultArea"></p>
+
 <button id="nextQuestionBtn">次の問題</button>
+
+<!-- keyboard -->
+<span id="spelTest" style="display:none;">
+<br/>
+<div id="keyboard"></div>
+
+<button id="backspaceBtn" class="subBtn">←</button>
+<button id="clearBtn" class="subBtn">クリア</button>
+</span>
+
 </section>
+
+<!-- quizFinish -->
+<section id="quizFinish" style="display:none;">
+</section>
+<button id="shareBtn">結果を共有</button>
 
 </main>
 
+    <script src="apptest.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
