@@ -9,8 +9,8 @@ unicycle,一輪車
 train,電車
 ship,船
 fruit,果物
-apple,リンゴ
+apple,りんご
 melon,メロン
-peach,ピーチ
+peach,もも
 orange,オレンジ
 lemon,レモン
