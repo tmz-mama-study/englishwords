@@ -123,6 +123,7 @@ function enableButtons() {
 }
 
 
+
 // ***************************************************************
 // 問題表示
 // ***************************************************************
@@ -376,7 +377,7 @@ function finishTest() {
             : Math.round(correctCount / total * 100);
 
     let weakWordHtml = "";
-
+	
     if (weakWords.length > 0) {
         weakWordHtml = `
             <h3>苦手単語</h3>
@@ -429,7 +430,7 @@ function finishTest() {
 全${total}問
 正解： ${correctCount}問／不正解 ${wrongCount}問
 正答率 ${rate}%
-${weakWords}`;
+`;
 }
 	}
 
