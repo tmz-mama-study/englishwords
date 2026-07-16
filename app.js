@@ -334,7 +334,6 @@ nextQuestionBtn.addEventListener("click", () => {
     showQuestion(modewk);
 });
 
-
 // ***************************************************************
 // 終了
 // ***************************************************************
@@ -383,12 +382,11 @@ function finishTest() {
 		break;
 	}
 	finishTestData = `
-        📚 英単語テスト結果(${testModeStr})
-        全${total}問
-        正解： ${correctCount}問／不正解 ${wrongCount}問
-        正答率 ${rate}%
-		${weakWordHtml}
-    	`;
+📚 英単語テスト結果(${testModeStr})
+全${total}問
+正解： ${correctCount}問／不正解 ${wrongCount}問
+正答率 ${rate}%
+${weakWords}`;
 }
 
 
@@ -423,6 +421,7 @@ function addWeakWord(word) {
 		console.log(weakWords);
     }
 }
+
 
 // ***************************************************************
 // 共有
