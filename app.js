@@ -334,9 +334,11 @@ nextQuestionBtn.addEventListener("click", () => {
     showQuestion(modewk);
 });
 
+
 // ***************************************************************
 // 終了
 // ***************************************************************
+let finishTestData = "";
 function finishTest() {
     const total = correctCount + wrongCount;
 
@@ -370,6 +372,23 @@ function finishTest() {
         <p>正答率 ${rate}%</p>
         ${weakWordHtml}
     `;
+	
+	let testModeStr = "";
+	switch(modewk){
+	case mode_read:
+		testModeStr = "読み";
+		break;
+	case mode_spel:
+		testModeStr = "スペル";
+		break;
+	}
+	finishTestData = `
+        📚 英単語テスト結果(${testModeStr})
+        全${total}問
+        正解： ${correctCount}問／不正解 ${wrongCount}問
+        正答率 ${rate}%
+		${weakWordHtml}
+    	`;
 }
 
 
@@ -405,7 +424,6 @@ function addWeakWord(word) {
     }
 }
 
-
 // ***************************************************************
 // 共有
 // ***************************************************************
@@ -432,7 +450,7 @@ function shareResult() {
     if (navigator.share) {
         navigator.share({
             title: "英単語テスト結果",
-            text: text
+            text: finishTestData
         });
     } else {
         navigator.clipboard.writeText(text);
