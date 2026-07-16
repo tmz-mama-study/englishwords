@@ -1,2 +1,1 @@
 サンプル,data/test.txt
-中１-２学期-中間,data/tyu01-02-t.txt
