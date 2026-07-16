@@ -19,8 +19,10 @@ let weakWords = [];
 let modewk=-1;
 const mode_read=0;
 const mode_spel=1;
+const mode_papr=2;
 
 shareBtn.hidden = true;
+kaitoBtn.hidden = true;
 window.addEventListener("DOMContentLoaded", loadBooks);
 
 async function loadBooks() {
@@ -148,6 +150,10 @@ function showQuestion(mode) {
 		hintStr = `   (${currentWord.english.length}文字)`;
 		answerInput.disabled = true;
 		break;
+	case mode_papr:
+		questStr = currentWord.english;
+		hintStr = `   (${currentPosition + 1}/${questionOrder.length})`;
+		break;
 	}
 	questionWord.textContent ="("+ (currentPosition+1) + ") " +questStr + hintStr;
 
@@ -157,8 +163,35 @@ function showQuestion(mode) {
 	const inpt = document.querySelectorAll('#answerInput')[0];
 	inpt.placeholder = inputStr;
 	
-	checkAnswerBtn.disabled = false;
-	nextQuestionBtn.hidden = true;
+	
+	
+	
+	switch(mode){
+	case mode_read:
+		checkAnswerBtn.disabled = false;
+		nextQuestionBtn.hidden = true;
+	    quizArea.style.display = "block";
+	    readTest.style.display = "block";
+		break;
+
+	case mode_spel:
+		checkAnswerBtn.disabled = false;
+		nextQuestionBtn.hidden = true;
+		answerInput.disabled = true;
+		quizArea.style.display = "block";
+	    spelTest.style.display = "block";
+		break;
+
+	case mode_papr:
+	    quizArea.style.display = "block";
+	    readTest.style.display = "none";
+
+		document.getElementById("answerArea").style.display = "none";
+		nextQuestionBtn.hidden = false;
+
+		break;
+	}
+
 }
 
 // 問題シャッフル
@@ -179,8 +212,10 @@ function startTest(){
 	quizFinish.style.display = "none";
 	readTest.style.display = "none";
 	spelTest.style.display = "none";
+	document.getElementById("answerArea").style.display = "block";
 
 	shareBtn.hidden = true;
+	kaitoBtn.hidden = true;
 
 	quiztitle.textContent = targetElement.textContent;
 
@@ -203,9 +238,6 @@ function startReadingTest() {
 	startTest();
 	modewk = mode_read;
 	
-    quizArea.style.display = "block";
-    readTest.style.display = "block";
-
     showQuestion(modewk);
 }
 
@@ -224,21 +256,7 @@ function startSpellingTest() {
 
 	createKeyboard();
 
-	quizArea.style.display = "block";
-    spelTest.style.display = "block";
-
     showQuestion(modewk);
-}
-
-
-
-function showSpellingQuestion() {
-
-    currentWord = questionOrder[currentPosition];
-    spellingQuestion.textContent = currentWord.japanese;
-
-    spellingResult.textContent = "";
-    nextSpellingBtn.disabled = true;
 }
 function createKeyboard() {
 
@@ -288,6 +306,17 @@ backspaceBtn.addEventListener("click", () => {
 
 
 
+// ***************************************************************
+// 紙に書く
+// ***************************************************************
+document.getElementById("paperBtn").addEventListener("click", startPaperTest);
+function startPaperTest() {
+	
+	startTest();
+	modewk = mode_papr;
+	
+    showQuestion(modewk);
+}
 
 
 
@@ -360,27 +389,41 @@ function finishTest() {
         `;
     }
 
-	shareBtn.hidden = false;
     quizArea.style.display = "none";
     quizFinish.style.display = "block";
 
-    quizFinish.innerHTML = `
-        <h2>テスト終了</h2>
-        <p>全${total}問</p>
-        <p>正解： ${correctCount}問／不正解 ${wrongCount}問</p>
-        <p>正答率 ${rate}%</p>
-        ${weakWordHtml}
-    `;
-	
-	let testModeStr = "";
-	switch(modewk){
-	case mode_read:
-		testModeStr = "読み";
-		break;
-	case mode_spel:
-		testModeStr = "スペル";
-		break;
-	}
+	if (modewk == mode_papr){
+		
+		kaitoBtn.hidden = false;
+		
+	    quizFinish.innerHTML = `
+	        <h2>テスト終了</h2>
+	        <p>全${questionOrder.length}問</p>
+			<p>紙に書いた読みを見ながら、英単語を書いてください</p>
+	    `;
+		
+		
+	}else{
+		
+		shareBtn.hidden = false;
+
+	    quizFinish.innerHTML = `
+	        <h2>テスト終了</h2>
+	        <p>全${total}問</p>
+	        <p>正解： ${correctCount}問／不正解 ${wrongCount}問</p>
+	        <p>正答率 ${rate}%</p>
+	        ${weakWordHtml}
+	    `;
+		
+		let testModeStr = "";
+		switch(modewk){
+		case mode_read:
+			testModeStr = "読み";
+			break;
+		case mode_spel:
+			testModeStr = "スペル";
+			break;
+		}
 	finishTestData = `
 📚 英単語テスト結果(${testModeStr})
 全${total}問
@@ -388,7 +431,7 @@ function finishTest() {
 正答率 ${rate}%
 ${weakWords}`;
 }
-
+	}
 
 
 // ***************************************************************
@@ -455,4 +498,25 @@ function shareResult() {
         navigator.clipboard.writeText(text);
         alert("結果をクリップボードにコピーしました");
     }
+}
+
+// ***************************************************************
+// 紙に書くの回答
+// ***************************************************************
+document.getElementById("kaitoBtn").addEventListener("click", kaitoResult);
+function kaitoResult() {
+
+
+const answerList = questionOrder
+        .map(word =>
+            `<li>${word.english} : ${word.japanese}</li>`)
+        .join("");
+
+    quizFinish.innerHTML = `
+        <h3>答え一覧</h3>
+        <ol>
+            ${answerList}
+        </ol>
+    `;
+
 }
