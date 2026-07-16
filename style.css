@@ -64,3 +64,28 @@ button {
 #answerInput{
     min-height: 40px;
 }
+
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 6px;
+}
+
+.keyboard-row button {
+    width: 36px;
+    height: 30px;
+    padding: 0;
+    font-size: 14px;
+}
+
+
+.subBtn {
+
+    width: 60px;
+    min-height: 30px;
+}
+    background: #6b7280;
+    font-size: 0.9rem;
+}
