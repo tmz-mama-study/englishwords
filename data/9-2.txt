@@ -1,0 +1,17 @@
+#9級 No.2
+supermarket,スーパーマーケット
+shopping,買い物
+tree,木
+sea,海
+river,川
+mountain,山
+flower,花
+lake,湖
+beach,浜
+foot,足
+leg,脚
+hand,手
+club,クラブ
+school,学校
+homework,宿題
+sport,スポーツ
