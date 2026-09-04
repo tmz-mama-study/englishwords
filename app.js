@@ -103,9 +103,15 @@ function parseWordBook(text) {
             continue;
         }
 
+		let strHints = "";
+		if (parts.length >=3){
+			strHints = parts[2].trim();
+		}
+		
         words.push({
             english: parts[0].trim(),
-            japanese: parts[1].trim()
+            japanese: parts[1].trim(),
+			hints: strHints
         });
     }
 
@@ -145,6 +151,7 @@ function showQuestion(mode) {
 		questStr = currentWord.english;
 		answerInput.disabled = false;
 		inputStr="日本語を入力";
+		hintStr = currentWord.hints;
 		break;
 	case mode_spel:
 		questStr = currentWord.japanese;
