@@ -1,16 +1,5 @@
 #サンプル問題
 
-grandmother,祖母
-car,車
-bus,バス
-airplane,飛行機
-bike,自転車
-unicycle,一輪車
-train,電車
-ship,船
-fruit,果物
-apple,りんご
-melon,メロン
-peach,もも
-orange,オレンジ
-lemon,レモン
+grandmother,祖母,aaa
+car,車,b
+bus,バス,c
