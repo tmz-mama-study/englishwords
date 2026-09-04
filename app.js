@@ -151,7 +151,7 @@ function showQuestion(mode) {
 		questStr = currentWord.english;
 		answerInput.disabled = false;
 		inputStr="日本語を入力";
-		hintStr = currentWord.hints;
+		hintStr =`   (${currentWord.hints})`;
 		break;
 	case mode_spel:
 		questStr = currentWord.japanese;
