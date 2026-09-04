@@ -1,0 +1,17 @@
+#9級 No.3
+fun,楽しいこと
+big,大きい
+good,よい
+great,すばらしい
+happy,幸せな
+hot,熱い
+nice,すてきな
+sad,悲しい
+kind,親切な
+no,いいえ
+help,手伝う
+dance,踊る
+do,する
+eat,食べる
+go,行く
+have,もっている

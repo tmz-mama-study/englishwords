@@ -1,0 +1,17 @@
+#9級 No.4
+like,好む,
+look,見る,
+play,する,競技、ゲームを～
+read,読む,
+run,走る,
+sing,歌う,
+study,勉強する,
+walk,歩く,
+swim,泳ぐ,
+cook,料理する,
+turn,順番,
+drink,飲む,
+wash,洗う,
+want,ほしい,
+sit,座る,
+ride,乗る,
